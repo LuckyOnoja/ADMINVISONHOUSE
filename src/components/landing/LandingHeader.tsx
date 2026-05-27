@@ -2,23 +2,36 @@
 
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navItems } from "./landing-data";
 
 export function LandingHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateScrolled = () => setScrolled(window.scrollY > 24);
+
+    updateScrolled();
+    window.addEventListener("scroll", updateScrolled, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateScrolled);
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header
+      className={`landing-header fixed inset-x-0 top-0 z-50 ${scrolled || mobileMenuOpen ? "is-scrolled" : ""
+        }`}
+    >
       <div className="mx-auto flex h-24 max-w-[1880px] items-center justify-between px-6 md:px-10 lg:px-14">
         <Link href="/" className="group flex items-center gap-3">
           <span className="brand-mark">ADMIN</span>
-          <span className="font-display text-5xl leading-none tracking-normal text-white md:text-6xl">
+          <span className="font-display text-3xl leading-none tracking-normal text-white md:text-6xl">
             VISION
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-lg font-bold text-white lg:flex xl:gap-11">
+        <nav className="hidden items-center gap-8 text-sm font-bold text-white lg:flex xl:gap-11">
           {navItems.map((item, index) =>
             item.href.startsWith("#") ? (
               <a
@@ -42,19 +55,6 @@ export function LandingHeader() {
             )
           )}
         </nav>
-
-        <div className="flex items-center gap-3">
-          <Link href="/plans" className="quote-button hidden md:inline-flex">
-            Get a Quote
-          </Link>
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            className="grid h-12 w-12 place-items-center bg-[#2f9f57] text-white lg:hidden"
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
       </div>
 
       {mobileMenuOpen && (

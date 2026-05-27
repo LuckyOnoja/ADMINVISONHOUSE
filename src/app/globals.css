@@ -93,6 +93,23 @@ button {
   font-size: 2.4rem;
 }
 
+.landing-header {
+  background: transparent;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease;
+}
+
+.landing-header.is-scrolled {
+  background: rgba(8, 8, 8, .76);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
 .nav-link {
   display: inline-flex;
   align-items: center;
@@ -146,14 +163,104 @@ button {
     linear-gradient(90deg, #111 0%, #0b0b0b 52%, #141414 100%);
 }
 
-.desart-hero::after {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .09), transparent);
-  content: "";
-  height: 1px;
+.hero-bg-video {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: .34;
   position: absolute;
-  right: 0;
-  top: 26%;
-  width: 44%;
+  width: 100%;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  background:
+    linear-gradient(180deg, rgba(8, 8, 8, .68) 0%, rgba(8, 8, 8, .9) 62%, rgba(8, 8, 8, .94) 100%),
+    linear-gradient(90deg, rgba(8, 8, 8, .82) 0%, rgba(8, 8, 8, .58) 50%, rgba(8, 8, 8, .8) 100%),
+    radial-gradient(circle at 20% 65%, rgba(47, 159, 87, .1), transparent 34%);
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.desart-hero::after {
+  content: none;
+}
+
+.montra-hero-title {
+  color: white;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 7.8vw, 10.5rem);
+  line-height: .82;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.hero-montra-copy {
+  margin-bottom: clamp(.75rem, 2vw, 2rem);
+}
+
+.hero-montra-copy p {
+  color: rgba(255, 255, 255, .76);
+  font-size: clamp(1.35rem, 1.75vw, 2rem);
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0;
+  max-width: 600px;
+}
+
+.hero-avatar,
+.hero-avatar-spark {
+  border: 6px solid var(--accent-green);
+  border-radius: 333px;
+  height: 38px;
+  margin-right: -12px;
+  width: 38px;
+}
+
+.hero-avatar {
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-avatar-spark {
+  align-items: center;
+  background: var(--accent-green);
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.hero-bottom-row {
+  align-items: center;
+  border-top: 4px solid rgba(255, 255, 255, .9);
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: clamp(2.2rem, 4vw, 4.5rem);
+  padding-top: 28px;
+}
+
+.hero-social-buttons {
+  display: flex;
+  gap: 22px;
+}
+
+.hero-social-buttons a {
+  align-items: center;
+  background: var(--accent-green);
+  border-radius: 999px;
+  color: white;
+  display: inline-flex;
+  font-size: 1.25rem;
+  font-weight: 900;
+  height: 64px;
+  justify-content: center;
+  width: 64px;
+}
+
+.hero-social-buttons a:hover {
+  transform: translateY(-3px);
 }
 
 .desart-title {
@@ -233,25 +340,25 @@ button {
 }
 
 .hero-social-rail {
-  align-items: center;
-  bottom: 10%;
+  align-items: flex-start;
+  bottom: clamp(2rem, 6vw, 5rem);
   color: rgba(255, 255, 255, .48);
   display: flex;
   flex-direction: column;
+  font-size: .95rem;
   font-weight: 800;
-  gap: 18px;
-  left: 28px;
+  gap: 14px;
+  left: 0;
   position: absolute;
   text-transform: lowercase;
-  transform: rotate(-90deg);
-  transform-origin: left center;
-  z-index: 5;
+  z-index: 3;
 }
 
 .hero-social-rail span {
   background: rgba(255, 255, 255, .25);
-  height: 1px;
-  width: 34px;
+  height: 28px;
+  margin-left: 2px;
+  width: 1px;
 }
 
 .hero-social-rail a:hover {
@@ -264,6 +371,7 @@ button {
   gap: 10px;
   left: 24px;
   position: absolute;
+  z-index: 3;
 }
 
 .hero-mobile-social a {
@@ -658,16 +766,8 @@ button {
 }
 
 @media (max-width: 1180px) {
-  .hero-social-rail {
-    display: none;
-  }
-
-  .hero-mobile-social {
-    display: flex;
-  }
-
-  .hero-art-panel {
-    min-height: 520px;
+  .hero-montra-grid {
+    grid-template-columns: 1fr;
   }
 
   .services-person {
@@ -707,24 +807,26 @@ button {
     display: none;
   }
 
-  .desart-title {
-    font-size: clamp(3.6rem, 18vw, 6rem);
+  .montra-hero-title {
+    font-size: clamp(4.2rem, 17vw, 7rem);
   }
 
-  .hero-art-panel {
-    min-height: 380px;
+  .hero-montra-copy p {
+    font-size: 1.15rem;
   }
 
-  .hero-portrait {
-    inset: 0;
-    mask-image: linear-gradient(180deg, black 0%, black 72%, transparent 100%);
+  .hero-bottom-row {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
-  .hero-search {
-    height: 64px;
-    right: 16px;
-    top: 16px;
-    width: 64px;
+  .hero-social-buttons {
+    gap: 12px;
+  }
+
+  .hero-social-buttons a {
+    height: 52px;
+    width: 52px;
   }
 
   .story-title {
