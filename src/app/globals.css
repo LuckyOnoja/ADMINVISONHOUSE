@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0D0E10;
+  --foreground: #F3F4F6;
+  
+  --card-bg: rgba(18, 20, 24, 0.7);
+  --card-border: rgba(16, 185, 129, 0.12);
+  --divider: rgba(255, 255, 255, 0.05);
+  
+  --accent-green: #10B981;
+  --accent-green-rgb: 16, 185, 129;
+  --accent-green-glow: rgba(16, 185, 129, 0.15);
+  
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent-green: var(--accent-green);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 100% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* ─── Widescreen aspect for showreel containers ─── */
+.showreel-aspect {
+  aspect-ratio: 16 / 9;
+}
+
+/* ─── Custom visual borders ─── */
+.sleek-border {
+  border: 1px solid var(--divider);
+}
+
+.sleek-border-b {
+  border-bottom: 1px solid var(--divider);
+}
+
+.sleek-border-t {
+  border-top: 1px solid var(--divider);
+}
+
+/* ─── Glassmorphism components ─── */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.06);
+  transform: translateY(-4px);
+}
+
+/* ─── Custom scrollbars ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0E10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1C1E22;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}
+
+/* ─── Dynamic glow effects ─── */
+.glow-text {
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+.glow-btn {
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-btn:hover {
+  box-shadow: 0 4px 30px rgba(16, 185, 129, 0.4);
+  transform: scale(1.015);
+}
+
+/* ─── ADMIN VISION HOUSE logo box ─── */
+.logo-admin-box {
+  border: 1.5px solid var(--accent-green);
+  padding: 0.125rem 0.5rem;
+  color: var(--accent-green);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+/* ─── Hide spin buttons on number inputs ─── */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ─── Selection styling ─── */
+::selection {
+  background: rgba(16, 185, 129, 0.25);
+  color: #ffffff;
+}
+
+/* ─── Focus visible styles ─── */
+:focus-visible {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+}
+
+/* ─── Smooth image/placeholder backgrounds ─── */
+.placeholder-bg {
+  background: linear-gradient(135deg, #16181D 0%, #1A1D24 50%, #16181D 100%);
+}
+
+/* ─── Fade-in animation for sections ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Pulse glow ring for play buttons ─── */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(16, 185, 129, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ─── Staggered reveal for grid children ─── */
+@keyframes staggerReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stagger-reveal > * {
+  animation: staggerReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.stagger-reveal > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-reveal > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-reveal > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-reveal > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-reveal > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-reveal > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-reveal > *:nth-child(7) { animation-delay: 0.35s; }
+
+/* ─── Horizontal marquee-style line accent ─── */
+.accent-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(16, 185, 129, 0.3) 30%,
+    rgba(16, 185, 129, 0.6) 50%,
+    rgba(16, 185, 129, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+/* ─── Responsive font sizing helpers ─── */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.75rem;
+    line-height: 0.95;
+  }
+}
