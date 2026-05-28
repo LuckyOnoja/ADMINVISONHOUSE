@@ -10,10 +10,10 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 
-const titleLine1 = ["S", "T", "R"];
+const titleLine1 = ["A", "D", "M", "I", "N"];
 const titleAccent = "O";
-const titleLine1End = ["N", "G"];
-const titleLine2 = "CRAFTING VISUALS";
+const titleLine1End = ["", ""];
+const titleLine2 = "VISION HOUSE";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
