@@ -37,6 +37,44 @@ const PACKAGES_MAP: Record<string, string> = {
   "podcast": "Podcast Studio"
 };
 
+const PACKAGE_VISUALS: Record<string, { image: string; accent: string }> = {
+  "serenity-arch": {
+    image:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80",
+    accent: "#7cf1a8",
+  },
+  "neo-tide": {
+    image:
+      "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1600&q=80",
+    accent: "#5ce0ff",
+  },
+  "velvet-corner": {
+    image:
+      "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1600&q=80",
+    accent: "#ff7199",
+  },
+  "amber-lounge": {
+    image:
+      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=80",
+    accent: "#ffc275",
+  },
+  "elite-circle": {
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+    accent: "#d8e6ff",
+  },
+  "iconic-oasis": {
+    image:
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80",
+    accent: "#8ff5c0",
+  },
+  "podcast": {
+    image:
+      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1600&q=80",
+    accent: "#95ffcb",
+  },
+};
+
 const BACKEND_URL = "http://localhost:5001";
 
 export default function BookSpacePage() {
@@ -44,6 +82,7 @@ export default function BookSpacePage() {
   const router = useRouter();
   const packageId = params.packageId as string;
   const packageName = PACKAGES_MAP[packageId] || "Unknown Space";
+  const packageVisual = PACKAGE_VISUALS[packageId];
 
   // State managers
   const [operatingDates, setOperatingDates] = useState<string[]>([]);
@@ -215,48 +254,63 @@ export default function BookSpacePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0E10]/80 backdrop-blur-xl sleek-border-b">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-          <Link href="/plans" className="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-widest font-bold">
+    <div className="relative min-h-screen overflow-hidden bg-[#060707] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(61,204,110,.22),transparent_36%),radial-gradient(circle_at_85%_80%,rgba(61,204,110,.1),transparent_34%)]" />
+
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#090a0bcc] backdrop-blur-xl">
+        <div className="mx-auto flex h-20 w-[min(100%-2rem,1320px)] items-center justify-between">
+          <Link href="/plans" className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/75 transition hover:border-[#3dcc6e] hover:text-white">
             <ArrowLeft size={14} />
-            Back to Rates
+            Back to rates
           </Link>
-          <div className="flex items-center gap-4">
-            <div className="text-right">
-              <span className="text-[10px] text-gray-600 uppercase tracking-widest font-mono block">Booking</span>
-              <h1 className="text-sm font-bold text-[#10B981]">{packageName}</h1>
-            </div>
-            <Link href="/" className="flex items-center gap-1 shrink-0">
-              <span className="logo-admin-box text-[10px] py-0">ADMIN</span>
-              <span className="text-[10px] font-extrabold text-gray-400 tracking-wider">VISION</span>
-            </Link>
+          <div className="text-right">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.2em] text-white/45">Booking package</span>
+            <h1 className="font-display text-xl text-[#74f2a5]">{packageName}</h1>
           </div>
         </div>
       </header>
 
-      <main className="flex-grow pt-28 pb-16 px-6 max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Calendar and Slots Selection (Col-8) */}
-        <div className="lg:col-span-8 space-y-8">
-          <div className="glass-panel p-6 border-gray-800">
+      <main className="relative z-10 mx-auto grid w-[min(100%-2rem,1320px)] grid-cols-1 gap-8 pb-16 pt-28 lg:grid-cols-12 lg:items-start">
+        <section className="lg:col-span-8 space-y-8">
+          <div className="relative overflow-hidden border border-white/10 p-6 md:p-7">
+            {packageVisual ? (
+              <>
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-30"
+                  style={{ backgroundImage: `url(${packageVisual.image})` }}
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.82))]" />
+              </>
+            ) : null}
+            <div className="relative z-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">Secure booking flow</p>
+                <h2 className="font-display text-4xl leading-[0.9]">Reserve {packageName}</h2>
+              </div>
+              <p className="max-w-xs text-sm text-white/70">
+                Choose date, time, and duration. Then complete payment securely with Paystack.
+              </p>
+            </div>
+          </div>
+
+          <div className="border border-white/10 bg-[#0d0e10d9] p-6 md:p-7">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold flex items-center gap-2">
-                <CalendarIcon size={18} className="text-[#10B981]" />
+                <CalendarIcon size={18} className="text-[#74f2a5]" />
                 Select Session Date
               </h2>
               
               <div className="flex items-center gap-4">
                 <button 
                   onClick={prevMonth}
-                  className="p-1 px-3 rounded bg-gray-800 text-gray-400 hover:text-white transition-colors text-sm"
+                  className="p-1 px-3 border border-white/15 bg-white/5 text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   Prev
                 </button>
                 <span className="font-bold text-sm font-mono">{monthNames[currentMonth]} {currentYear}</span>
                 <button 
                   onClick={nextMonth}
-                  className="p-1 px-3 rounded bg-gray-800 text-gray-400 hover:text-white transition-colors text-sm"
+                  className="p-1 px-3 border border-white/15 bg-white/5 text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   Next
                 </button>
@@ -271,7 +325,7 @@ export default function BookSpacePage() {
             ) : (
               <div>
                 {/* Days of week */}
-                <div className="grid grid-cols-7 gap-2 text-center text-xs font-mono text-gray-500 mb-4 border-b border-gray-800 pb-2">
+                <div className="grid grid-cols-7 gap-2 text-center text-xs font-mono text-gray-500 mb-4 border-b border-white/10 pb-2">
                   <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
                 </div>
                 
@@ -296,18 +350,18 @@ export default function BookSpacePage() {
                         key={`day-${dayNum}`}
                         disabled={!isAvailable}
                         onClick={() => handleDateSelect(dayNum)}
-                        className={`h-12 text-sm font-mono font-bold rounded-lg border transition-all flex flex-col items-center justify-center relative
+                        className={`h-12 text-sm font-mono font-bold rounded-none border transition-all flex flex-col items-center justify-center relative
                           ${isAvailable 
                             ? isSelected
-                              ? "bg-[#10B981] text-gray-950 border-emerald-400 shadow-lg scale-105"
-                              : "bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20 text-emerald-400 hover:border-emerald-500/40"
-                            : "bg-transparent border-transparent text-gray-700 cursor-not-allowed"
+                              ? "bg-[#3dcc6e] text-[#05230f] border-[#79f7ab] shadow-lg scale-[1.02]"
+                              : "bg-[#101312] hover:bg-[#122018] border-[#3dcc6e]/20 text-[#9df8c4] hover:border-[#3dcc6e]/45"
+                            : "bg-transparent border-white/5 text-gray-700 cursor-not-allowed"
                           }
                         `}
                       >
                         <span>{dayNum}</span>
                         {isAvailable && !isSelected && (
-                          <span className="w-1.5 h-1.5 bg-[#10B981] rounded-full absolute bottom-1.5" />
+                          <span className="w-1.5 h-1.5 bg-[#3dcc6e] rounded-full absolute bottom-1.5" />
                         )}
                       </button>
                     );
@@ -316,23 +370,23 @@ export default function BookSpacePage() {
                 
                 <div className="mt-6 flex items-center gap-4 text-xs text-gray-500">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded bg-emerald-500/5 border border-emerald-500/20" />
+                    <div className="w-3 h-3 rounded-none bg-emerald-500/5 border border-emerald-500/20" />
                     <span>Operating Studio Dates</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded bg-[#10B981]" />
+                    <div className="w-3 h-3 rounded-none bg-[#10B981]" />
                     <span>Selected Date</span>
-                  </div>
-                </div>
+            </div>
+          </div>
               </div>
             )}
           </div>
 
           {/* Time slot picker */}
           {selectedDate && (
-            <div className="glass-panel p-6 border-gray-800">
+            <div className="border border-white/10 bg-[#0d0e10d9] p-6 md:p-7">
               <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
-                <Clock size={18} className="text-[#10B981]" />
+                <Clock size={18} className="text-[#74f2a5]" />
                 Select Start Time & Duration
               </h2>
 
@@ -356,10 +410,10 @@ export default function BookSpacePage() {
                             setSelectedDuration(30);
                             setSelectedTime("");
                           }}
-                          className={`flex-1 py-3 px-4 rounded-xl font-bold border transition-all text-sm
+                          className={`flex-1 py-3 px-4 rounded-none font-bold border transition-all text-sm
                             ${selectedDuration === 30
                               ? "bg-emerald-500/10 border-[#10B981] text-emerald-400"
-                              : "bg-gray-900 border-gray-800 text-gray-400 hover:border-gray-700"
+                              : "bg-gray-900 border-white/10 text-gray-400 hover:border-white/25"
                             }
                           `}
                         >
@@ -371,10 +425,10 @@ export default function BookSpacePage() {
                             setSelectedDuration(60);
                             setSelectedTime("");
                           }}
-                          className={`flex-1 py-3 px-4 rounded-xl font-bold border transition-all text-sm
+                          className={`flex-1 py-3 px-4 rounded-none font-bold border transition-all text-sm
                             ${selectedDuration === 60
                               ? "bg-emerald-500/10 border-[#10B981] text-emerald-400"
-                              : "bg-gray-900 border-gray-800 text-gray-400 hover:border-gray-700"
+                              : "bg-gray-900 border-white/10 text-gray-400 hover:border-white/25"
                             }
                           `}
                         >
@@ -398,12 +452,12 @@ export default function BookSpacePage() {
                             type="button"
                             disabled={!isAvailable}
                             onClick={() => setSelectedTime(slot.time)}
-                            className={`py-3 text-sm font-mono font-bold rounded-lg border transition-all
+                            className={`py-3 text-sm font-mono font-bold rounded-none border transition-all
                               ${isAvailable
                                 ? isSelected
                                   ? "bg-[#10B981] text-gray-950 border-emerald-400 font-extrabold shadow-md scale-105"
-                                  : "bg-gray-900 border-gray-800 text-gray-300 hover:border-[#10B981] hover:text-white"
-                                : "bg-transparent border-transparent text-gray-700 cursor-not-allowed"
+                                  : "bg-gray-900 border-white/10 text-gray-300 hover:border-[#10B981] hover:text-white"
+                                : "bg-transparent border-white/5 text-gray-700 cursor-not-allowed"
                               }
                             `}
                           >
@@ -417,12 +471,11 @@ export default function BookSpacePage() {
               )}
             </div>
           )}
-        </div>
+        </section>
 
-        {/* Checkout overlay sidebar (Col-4) */}
-        <div className="lg:col-span-4">
-          <div className="glass-panel p-6 border-gray-800 sticky top-28 bg-[#151922]">
-            <h3 className="text-lg font-bold mb-4 text-white pb-3 border-b border-gray-800">Booking Summary</h3>
+        <aside className="lg:col-span-4">
+          <div className="sticky top-28 border border-white/12 bg-[#0f1114ed] p-6">
+            <h3 className="text-lg font-bold mb-4 text-white pb-3 border-b border-white/10">Booking Summary</h3>
             
             <div className="space-y-4 mb-6 text-sm">
               <div className="flex justify-between">
@@ -442,14 +495,14 @@ export default function BookSpacePage() {
                 <span className="font-mono text-white">{packageId === "podcast" ? "1 Hour" : `${selectedDuration} Minutes`}</span>
               </div>
               
-              <div className="border-t border-gray-800 pt-4 flex justify-between items-center">
+              <div className="border-t border-white/10 pt-4 flex justify-between items-center">
                 <span className="font-bold text-white">Total Rate:</span>
-                <span className="font-mono font-extrabold text-xl text-[#10B981] glow-text">₦{computePrice().toLocaleString()}</span>
+                <span className="font-mono font-extrabold text-xl text-[#10B981]">₦{computePrice().toLocaleString()}</span>
               </div>
             </div>
 
             {selectedDate && selectedTime ? (
-              <form onSubmit={handleBookingSubmit} className="space-y-4 pt-4 border-t border-gray-800/80">
+              <form onSubmit={handleBookingSubmit} className="space-y-4 pt-4 border-t border-white/10">
                 <h4 className="text-xs text-gray-500 uppercase tracking-widest font-mono mb-2">Customer Details:</h4>
                 
                 <div>
@@ -461,7 +514,7 @@ export default function BookSpacePage() {
                       required
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-900 border border-gray-800 text-sm focus:outline-none focus:border-[#10B981] transition-all text-white"
+                      className="w-full pl-10 pr-4 py-3 rounded-none bg-gray-900 border border-white/12 text-sm focus:outline-none focus:border-[#10B981] transition-all text-white"
                     />
                   </div>
                 </div>
@@ -475,7 +528,7 @@ export default function BookSpacePage() {
                       required
                       value={customerEmail}
                       onChange={(e) => setCustomerEmail(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-900 border border-gray-800 text-sm focus:outline-none focus:border-[#10B981] transition-all text-white"
+                      className="w-full pl-10 pr-4 py-3 rounded-none bg-gray-900 border border-white/12 text-sm focus:outline-none focus:border-[#10B981] transition-all text-white"
                     />
                   </div>
                 </div>
@@ -489,13 +542,13 @@ export default function BookSpacePage() {
                       required
                       value={customerPhone}
                       onChange={(e) => setCustomerPhone(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-lg bg-gray-900 border border-gray-800 text-sm focus:outline-none focus:border-[#10B981] transition-all text-white"
+                      className="w-full pl-10 pr-4 py-3 rounded-none bg-gray-900 border border-white/12 text-sm focus:outline-none focus:border-[#10B981] transition-all text-white"
                     />
                   </div>
                 </div>
 
                 {errorMsg && (
-                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-start gap-2 text-xs text-red-400">
+                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-none flex items-start gap-2 text-xs text-red-400">
                     <AlertCircle size={14} className="flex-shrink-0 mt-0.5" />
                     <span>{errorMsg}</span>
                   </div>
@@ -504,7 +557,7 @@ export default function BookSpacePage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 bg-[#10B981] text-gray-950 font-extrabold py-4 rounded-xl transition-all hover:bg-emerald-400 disabled:bg-emerald-500/50 disabled:cursor-not-allowed glow-btn"
+                  className="w-full flex items-center justify-center gap-2 bg-[#10B981] text-gray-950 font-extrabold py-4 rounded-none transition-all hover:bg-emerald-400 disabled:bg-emerald-500/50 disabled:cursor-not-allowed"
                 >
                   {submitting ? (
                     <>
@@ -517,19 +570,18 @@ export default function BookSpacePage() {
                 </button>
               </form>
             ) : (
-              <div className="p-4 bg-gray-900/60 rounded-xl border border-gray-800 text-center text-xs text-gray-500">
+              <div className="p-4 bg-gray-900/60 rounded-none border border-white/10 text-center text-xs text-gray-500">
                 Please select a calendar date and start time slot to proceed to secure Paystack billing checkout.
               </div>
             )}
           </div>
-        </div>
+        </aside>
       </main>
 
-      {/* Footer */}
-      <footer className="sleek-border-t bg-[#0A0B0D]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+      <footer className="border-t border-white/10 bg-[#090a0b]">
+        <div className="mx-auto flex w-[min(100%-2rem,1320px)] flex-col items-center justify-between gap-4 py-6 text-xs text-white/45 md:flex-row">
           <span>© {new Date().getFullYear()} Admin Vision House. All rights reserved.</span>
-          <span className="text-gray-700">Payments secured by Paystack</span>
+          <span className="text-white/35">Payments secured by Paystack</span>
         </div>
       </footer>
     </div>

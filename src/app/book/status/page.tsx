@@ -164,16 +164,26 @@ function StatusContent() {
 
 export default function BookingStatusPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="sleek-border-b h-20 flex items-center justify-center">
-        <Link href="/" className="flex items-center gap-1">
-          <span className="logo-admin-box text-base tracking-wider">ADMIN</span>
-          <span className="text-base font-extrabold text-gray-200 tracking-wider">VISION</span>
-          <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase ml-1 self-end mb-0.5">HOUSE</span>
-        </Link>
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#060707] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(61,204,110,.16),transparent_36%),radial-gradient(circle_at_80%_85%,rgba(61,204,110,.08),transparent_34%)]" />
+
+      <header className="relative z-10 border-b border-white/10 bg-[#090a0bcc] backdrop-blur-xl">
+        <div className="mx-auto flex h-20 w-[min(100%-2rem,1200px)] items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="inline-flex h-9 items-center bg-[#2f9f57] px-3 font-display text-2xl leading-none">
+              ADMIN
+            </span>
+            <span className="font-display text-3xl leading-none text-white">
+              VISION
+            </span>
+          </Link>
+          <Link href="/plans" className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70 transition hover:text-white">
+            View Packages
+          </Link>
+        </div>
       </header>
 
-      <main className="flex-grow flex items-center justify-center px-6 py-12">
+      <main className="relative z-10 flex flex-grow items-center justify-center px-6 py-12">
         <Suspense fallback={
           <div className="text-center py-16 space-y-4">
             <Loader2 className="animate-spin text-[#10B981] mx-auto" size={48} />
@@ -184,8 +194,8 @@ export default function BookingStatusPage() {
         </Suspense>
       </main>
 
-      <footer className="sleek-border-t bg-[#0A0B0D]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-6 text-center text-xs text-gray-600">
+      <footer className="relative z-10 border-t border-white/10 bg-[#090a0b]">
+        <div className="mx-auto w-[min(100%-2rem,1200px)] py-6 text-center text-xs text-white/45">
           © {new Date().getFullYear()} Admin Vision House. Payments secured by Paystack.
         </div>
       </footer>
