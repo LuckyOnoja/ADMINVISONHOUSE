@@ -1101,6 +1101,60 @@ button {
   pointer-events: none;
 }
 
+.consultation-text-button {
+  min-height: 68px;
+  padding: 0 36px;
+  font-size: 1.15rem;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  position: relative;
+  animation: consultationPulse 2.4s ease-in-out infinite;
+}
+
+.consultation-text-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: skewX(-24deg);
+  animation: consultationSweep 2.8s ease-in-out infinite;
+}
+
+.consultation-text-button:hover {
+  animation-duration: 1.8s;
+}
+
+@keyframes consultationPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.62);
+  }
+}
+
+@keyframes consultationSweep {
+  0% {
+    left: -120%;
+  }
+  60%,
+  100% {
+    left: 150%;
+  }
+}
+
 /* ─────────────────────────────────────────────
    PLAYER / SOCIAL
    ───────────────────────────────────────────── */
@@ -1349,6 +1403,13 @@ button {
     min-height: 64px;
     padding: 0 28px;
     width: 100%;
+  }
+
+  .consultation-text-button {
+    min-height: 58px;
+    width: 100%;
+    padding: 0 24px;
+    font-size: 1rem;
   }
 
   .accent-block {

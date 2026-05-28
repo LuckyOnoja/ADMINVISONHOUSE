@@ -190,8 +190,8 @@ export function MontraReplicaSections() {
               premium and convert visitors into studio bookings.
             </p>
           </div>
-          <Link href="/plans" className="black-button">
-            Free Consultation <Star size={18} />
+          <Link href="/plans" className="black-button consultation-text-button md:self-end">
+            Free Consultation <Star size={22} />
           </Link>
         </div>
       </section>
