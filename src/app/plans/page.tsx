@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
+  BadgeCheck,
   Clock,
   Camera,
   Video,
@@ -12,7 +13,7 @@ import {
   Users,
   Mic,
   Sparkles,
-  ChevronRight,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function PlansPage() {
@@ -27,6 +28,8 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
+      image:
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80",
       icon: Camera,
       featured: false,
     },
@@ -40,6 +43,8 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
+      image:
+        "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1600&q=80",
       icon: Video,
       featured: true,
     },
@@ -53,6 +58,8 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
+      image:
+        "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1600&q=80",
       icon: Layers,
       featured: false,
     },
@@ -66,6 +73,8 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
+      image:
+        "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=80",
       icon: Award,
       featured: false,
     },
@@ -79,6 +88,8 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
+      image:
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
       icon: Users,
       featured: false,
     },
@@ -92,6 +103,8 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
+      image:
+        "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80",
       icon: Sparkles,
       featured: false,
     },
@@ -103,30 +116,30 @@ export default function PlansPage() {
         "Equipped with professional vocal acoustics, Shure mics, multi-angle 4K streaming capture, and live control mixers.",
       prices: [{ duration: "1 Hour", value: "₦20,000" }],
       extra: "30-minute sessions not available for this space",
+      image:
+        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1600&q=80",
       icon: Mic,
       featured: false,
     },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0E10]/80 backdrop-blur-xl sleek-border-b">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-1 shrink-0">
-            <span className="logo-admin-box text-base tracking-wider">
+    <div className="relative min-h-screen overflow-hidden bg-[#060707] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(61,204,110,.22),transparent_36%),radial-gradient(circle_at_80%_85%,rgba(61,204,110,.12),transparent_30%)]" />
+
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#090a0bcc] backdrop-blur-xl">
+        <div className="mx-auto flex h-20 w-[min(100%-2rem,1320px)] items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="inline-flex h-9 items-center bg-[#2f9f57] px-3 font-display text-2xl leading-none">
               ADMIN
             </span>
-            <span className="text-base font-extrabold text-gray-200 tracking-wider">
+            <span className="font-display text-3xl leading-none text-white">
               VISION
-            </span>
-            <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase ml-1 self-end mb-0.5">
-              HOUSE
             </span>
           </Link>
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-widest font-bold"
+            className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70 transition hover:border-[#3dcc6e] hover:text-white"
           >
             <ArrowLeft size={14} />
             Back to Home
@@ -134,110 +147,125 @@ export default function PlansPage() {
         </div>
       </header>
 
-      {/* Hero Banner */}
-      <section className="pt-32 pb-16 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#111318] to-[#0D0E10]" />
-        <div className="max-w-[1400px] mx-auto relative z-10 text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-8 h-[1px] bg-[#10B981]" />
-            <span className="text-[11px] font-bold text-[#10B981] uppercase tracking-[0.3em]">
-              Transparent Pricing
-            </span>
-            <div className="w-8 h-[1px] bg-[#10B981]" />
+      <section className="relative px-6 pb-14 pt-30">
+        <div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[1.3fr_.7fr] lg:items-end">
+          <div>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-[#74f2a5]">
+              Conversion-focused package selection
+            </p>
+            <h1 className="font-display text-5xl leading-[0.9] text-white md:text-6xl lg:text-7xl">
+              Choose A Studio Package That Gets You More Clients
+            </h1>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/70 md:text-base">
+              This page is built to help visitors decide quickly and book with
+              confidence. Each package has a visual direction, clear inclusions,
+              and straightforward pricing.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4">
-            STUDIO <span className="text-[#10B981]">RATE CARD</span>
-          </h1>
-          <p className="text-gray-500 max-w-lg mx-auto text-sm">
-            Review our bespoke production spaces and select the perfect
-            environment for your creative session. Payments are securely
-            processed via Paystack.
-          </p>
+          <div className="border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#74f2a5]">
+              Booking confidence
+            </p>
+            <div className="space-y-2 text-sm text-white/78">
+              <p className="flex items-center gap-2">
+                <BadgeCheck size={15} className="text-[#74f2a5]" />
+                Fast confirmation after payment
+              </p>
+              <p className="flex items-center gap-2">
+                <ShieldCheck size={15} className="text-[#74f2a5]" />
+                Secure checkout via Paystack
+              </p>
+              <p className="flex items-center gap-2">
+                <Clock size={15} className="text-[#74f2a5]" />
+                Easy duration-based pricing
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Plans Grid */}
-      <main className="flex-grow pb-24 px-6">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[rgba(255,255,255,0.03)]">
+      <main className="relative z-10 flex-grow px-6 pb-24">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {plans.map((plan) => {
               const Icon = plan.icon;
               return (
                 <div
                   key={plan.id}
-                  className={`bg-[#0D0E10] p-8 md:p-10 flex flex-col justify-between relative group overflow-hidden transition-colors duration-500 hover:bg-[#111318] ${
-                    plan.featured ? "ring-1 ring-[#10B981]/20" : ""
+                  className={`group relative flex flex-col justify-between overflow-hidden border border-white/10 bg-[#0d0e10] transition duration-500 hover:-translate-y-1 hover:border-[#3dcc6e]/60 ${
+                    plan.featured ? "ring-1 ring-[#3dcc6e]/30" : ""
                   }`}
                 >
-                  {/* Top accent line */}
-                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-[#10B981] group-hover:w-full transition-all duration-500" />
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-30 transition duration-700 group-hover:scale-105 group-hover:opacity-42"
+                    style={{ backgroundImage: `url(${plan.image})` }}
+                    aria-hidden="true"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,5,6,.08),rgba(4,5,6,.82)_52%,rgba(4,5,6,.98))]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,204,110,.18),transparent_38%)] opacity-0 transition duration-500 group-hover:opacity-100" />
 
-                  {/* Featured badge */}
                   {plan.featured && (
-                    <div className="absolute top-4 right-4 text-[9px] font-bold text-[#10B981] uppercase tracking-widest bg-[#10B981]/10 px-3 py-1 border border-[#10B981]/20">
+                    <div className="absolute right-4 top-4 z-20 border border-[#74f2a5]/45 bg-[#0b2115d0] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[#74f2a5]">
                       Popular
                     </div>
                   )}
 
-                  <div>
-                    {/* Icon + Header */}
-                    <div className="w-14 h-14 border border-gray-800 flex items-center justify-center mb-6 group-hover:border-[#10B981] transition-colors duration-300">
+                  <div className="relative z-10 p-6 md:p-7">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center border border-white/20 bg-black/30 transition-colors duration-300 group-hover:border-[#74f2a5]/60">
                       <Icon
-                        size={22}
-                        className="text-gray-600 group-hover:text-[#10B981] transition-colors duration-300"
+                        size={20}
+                        className="text-white/75 transition-colors duration-300 group-hover:text-[#74f2a5]"
                       />
                     </div>
 
-                    <h2 className="text-2xl font-black mb-1 group-hover:text-[#10B981] transition-colors duration-300">
+                    <h2 className="font-display text-3xl text-white transition-colors duration-300 group-hover:text-[#74f2a5]">
                       {plan.name}
                     </h2>
-                    <p className="text-[10px] text-gray-600 uppercase tracking-widest font-mono mb-5">
+                    <p className="mb-4 mt-1 text-[10px] font-mono uppercase tracking-[0.18em] text-white/55">
                       {plan.tagline}
                     </p>
 
-                    <p className="text-gray-500 text-sm leading-relaxed mb-8">
+                    <p className="mb-7 text-sm leading-relaxed text-white/72">
                       {plan.description}
                     </p>
 
-                    {/* Pricing */}
-                    <div className="border-t border-gray-800/50 pt-6 mb-8 space-y-4">
+                    <div className="mb-7 space-y-3 border-t border-white/15 pt-5">
                       {plan.prices.map((price, idx) => (
                         <div
                           key={idx}
-                          className="flex justify-between items-baseline"
+                          className="flex items-baseline justify-between"
                         >
-                          <span className="text-gray-400 text-sm flex items-center gap-2">
+                          <span className="flex items-center gap-2 text-sm text-white/75">
                             <Clock
                               size={12}
-                              className="text-[#10B981]"
+                              className="text-[#74f2a5]"
                             />
                             {price.duration}
                           </span>
-                          <span className="text-lg font-black text-white font-mono">
+                          <span className="font-mono text-lg font-black text-white">
                             {price.value}
                           </span>
                         </div>
                       ))}
                       {plan.extra && (
-                        <div className="text-[10px] text-gray-600 italic font-mono border-t border-gray-800/30 pt-3">
+                        <div className="border-t border-white/10 pt-3 text-[10px] font-mono italic text-white/50">
                           {plan.extra}
                         </div>
                       )}
                     </div>
-                  </div>
 
-                  {/* CTA */}
-                  <Link
-                    href={`/book/${plan.id}`}
-                    className={`w-full flex items-center justify-center gap-2 font-extrabold py-4 text-xs uppercase tracking-widest transition-all ${
-                      plan.featured
-                        ? "bg-[#10B981] text-gray-950 hover:bg-emerald-400 glow-btn"
-                        : "border border-gray-800 text-gray-400 hover:border-[#10B981] hover:text-[#10B981]"
-                    }`}
-                  >
-                    Select & Book
-                    <ArrowRight size={14} />
-                  </Link>
+                    <Link
+                      href={`/book/${plan.id}`}
+                      className={`inline-flex w-full items-center justify-center gap-2 py-3.5 text-xs font-extrabold uppercase tracking-[0.16em] transition ${
+                        plan.featured
+                          ? "bg-[#3dcc6e] text-[#04210f] hover:bg-[#6cf8a6]"
+                          : "border border-white/25 bg-black/35 text-white/85 hover:border-[#74f2a5] hover:text-[#74f2a5]"
+                      }`}
+                    >
+                      Select & Book
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               );
             })}
@@ -245,19 +273,10 @@ export default function PlansPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="sleek-border-t bg-[#0A0B0D]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600">
-          <div className="flex items-center gap-1">
-            <span className="logo-admin-box text-[10px] py-0">ADMIN</span>
-            <span className="text-[10px] font-extrabold text-gray-400 tracking-wider">
-              VISION
-            </span>
-            <span className="ml-2">
-              © {new Date().getFullYear()} All rights reserved.
-            </span>
-          </div>
-          <span className="text-gray-700">Payments secured by Paystack</span>
+      <footer className="border-t border-white/10 bg-[#090a0b]">
+        <div className="mx-auto flex max-w-[1320px] flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-white/45 md:flex-row">
+          <p>© {new Date().getFullYear()} Admin Vision House. All rights reserved.</p>
+          <p className="text-white/35">Secure checkout powered by Paystack</p>
         </div>
       </footer>
     </div>
