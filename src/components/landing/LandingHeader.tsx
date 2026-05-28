@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { navItems } from "./landing-data";
 
@@ -20,18 +20,19 @@ export function LandingHeader() {
 
   return (
     <header
-      className={`landing-header fixed inset-x-0 top-0 z-50 ${scrolled || mobileMenuOpen ? "is-scrolled" : ""
-        }`}
+      className={`landing-header fixed inset-x-0 top-0 z-50 ${
+        scrolled || mobileMenuOpen ? "is-scrolled" : ""
+      }`}
     >
-      <div className="mx-auto flex h-24 max-w-[1880px] items-center justify-between px-6 md:px-10 lg:px-14">
-        <Link href="/" className="group flex items-center gap-3">
+      <div className="landing-header-inner mx-auto flex h-20 w-[min(100%-2rem,1360px)] items-center justify-between px-3 md:px-5">
+        <Link href="/" className="group flex items-center gap-2.5">
           <span className="brand-mark">ADMIN</span>
-          <span className="font-display text-3xl leading-none tracking-normal text-white md:text-6xl">
+          <span className="font-display text-3xl leading-none tracking-tight text-white md:text-4xl">
             VISION
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-bold text-white lg:flex xl:gap-11">
+        <nav className="nav-shell hidden items-center gap-6 text-sm font-bold text-white lg:flex">
           {navItems.map((item, index) =>
             item.href.startsWith("#") ? (
               <a
@@ -41,7 +42,7 @@ export function LandingHeader() {
               >
                 {item.label}
                 {["Services", "Portfolio"].includes(item.label) && (
-                  <ChevronDown size={20} strokeWidth={3} />
+                  <ChevronDown size={14} strokeWidth={2.8} />
                 )}
               </a>
             ) : (
@@ -55,16 +56,38 @@ export function LandingHeader() {
             )
           )}
         </nav>
+
+        <div className="nav-actions flex items-center gap-3">
+          <Link href="/plans" className="nav-book-button hidden lg:inline-flex">
+            Book Session <ArrowRight size={16} />
+          </Link>
+
+          <button
+            className="mobile-menu-toggle inline-flex items-center justify-center text-white lg:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="mx-4 bg-[#151515] p-6 shadow-2xl lg:hidden">
+      {/* Mobile slide-down menu */}
+      <div
+        className={`overflow-hidden transition-all duration-500 lg:hidden`}
+        style={{
+          maxHeight: mobileMenuOpen ? "500px" : "0",
+          opacity: mobileMenuOpen ? 1 : 0,
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        <div className="mobile-menu-panel mx-4 mb-4 p-5 shadow-2xl">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block border-b border-white/10 py-4 text-xl font-bold text-white"
+              className="mobile-menu-link block py-3.5 text-base font-semibold text-white"
             >
               {item.label}
             </Link>
@@ -72,12 +95,12 @@ export function LandingHeader() {
           <Link
             href="/plans"
             onClick={() => setMobileMenuOpen(false)}
-            className="quote-button mt-6 flex justify-center"
+            className="quote-button mt-5 flex justify-center"
           >
-            Get a Quote
+            Book a Session
           </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }

@@ -1,11 +1,28 @@
+"use client";
+
 import { landingImages, services } from "./landing-data";
+import { useScrollReveal } from "./useScrollReveal";
 
 export function ServicesSection() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <section id="services" className="services-mosaic bg-[#0d0d0d] px-6 pb-24 md:px-10 lg:px-14">
-      <div className="mx-auto grid max-w-[1880px] gap-8 lg:grid-cols-[minmax(320px,.7fr)_minmax(0,1fr)]">
+    <section
+      id="services"
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="services-mosaic bg-[#050505] px-6 md:px-10 lg:px-12"
+      style={{ paddingBottom: "var(--section-pad)" }}
+    >
+      {/* Section header */}
+      <div className="mx-auto max-w-[1440px] mb-10 pt-2">
+        <p className="eyebrow sr">What We Do</p>
+        <h2 className="section-title sr sr-delay-1">OUR SERVICES</h2>
+      </div>
+
+      {/* Content grid */}
+      <div className="mx-auto grid max-w-[1440px] gap-3 lg:grid-cols-[minmax(280px,.55fr)_minmax(0,1fr)]">
         <div
-          className="services-person"
+          className="services-person sr-scale"
           style={{ backgroundImage: `url(${landingImages.director})` }}
         />
 
@@ -16,13 +33,11 @@ export function ServicesSection() {
             return (
               <article
                 key={service.title}
-                className={
-                  index === 2
-                    ? "mosaic-service-card active"
-                    : "mosaic-service-card"
-                }
+                className={`mosaic-service-card sr sr-delay-${index + 1} ${
+                  index === 2 ? "active" : ""
+                }`}
               >
-                <Icon size={68} strokeWidth={1.8} />
+                <Icon size={48} strokeWidth={1.5} />
                 <h3>{service.title}</h3>
                 <p>{service.desc}</p>
               </article>
