@@ -175,11 +175,11 @@ export function HeroSection() {
             >
               <div className="hero-mini-card card-a">
                 <span>THIS WEEK</span>
-                <strong>18 SLOTS LEFT</strong>
+                <strong>80% BOOKED</strong>
               </div>
               <div className="hero-mini-card card-b">
-                <span>AVERAGE RESPONSE</span>
-                <strong>UNDER 20 MINS</strong>
+                <span>READY TO SHOOT?</span>
+                <strong>RESERVE YOUR SPACE</strong>
               </div>
             </motion.div>
           </motion.aside>
