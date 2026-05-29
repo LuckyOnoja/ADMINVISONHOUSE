@@ -35,9 +35,9 @@ export function LandingHeader() {
       }}
     >
       <div className="landing-header-inner mx-auto flex h-20 w-[min(100%-2rem,1360px)] items-center justify-between px-3 md:px-5">
-        <Link href="/" className="group flex items-center gap-2.5">
+        <Link href="/" className="group flex items-center gap-2 md:gap-2.5">
           <span className="brand-mark">ADMIN</span>
-          <span className="font-display text-3xl leading-none tracking-tight text-white md:text-4xl">
+          <span className="font-display text-2xl sm:text-3xl leading-none tracking-tight text-white md:text-4xl">
             VISION
           </span>
         </Link>
@@ -68,7 +68,7 @@ export function LandingHeader() {
         </nav>
 
         <div className="nav-actions flex items-center gap-3">
-          <Link href="/plans" className="nav-book-button hidden lg:inline-flex">
+          <Link href="/plans" className="nav-book-button !hidden lg:!inline-flex">
             <span className="nav-book-button-inner">
               Book A Session <Star size={16} className="star-icon" fill="#fff" strokeWidth={0} />
             </span>

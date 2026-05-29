@@ -51,6 +51,16 @@ function SplashBorder() {
 
 export function HeroCinematicCollage() {
   const [phase, setPhase] = useState<Phase>("phase1");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -154,11 +164,10 @@ export function HeroCinematicCollage() {
               { src: "/ADMIN_HOUSE/serenity-arch.jpg", x: 150, y: -65, rot: 18, label: "Serenity Arch" },
               { src: "/ADMIN_HOUSE/velvet-corner.jpg", x: 280, y: -120, rot: 20, label: "Velvet Corner" },
             ].map((img, index) => {
-              const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
               const xVal = isMobile ? img.x * 0.45 : img.x;
               const yVal = isMobile ? img.y * 0.45 : img.y;
               const sizeClass = isMobile
-                ? "w-[32vw] aspect-[3/4]"
+                ? "w-[30vw] aspect-[3/4]"
                 : "w-[18vw] max-w-[280px] aspect-[3/4]";
 
               return (
@@ -213,21 +222,6 @@ export function HeroCinematicCollage() {
                 </motion.div>
               );
             })}
-
-            {/* Title Overlay for Phase 2 */}
-            {/* <motion.div
-              className="absolute bottom-12 left-10 z-30"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              <span className="text-[9px] md:text-[10px] font-semibold tracking-[0.35em] uppercase text-emerald-400">
-                Phase II: The Assembly
-              </span>
-              <h3 className="text-lg md:text-2xl font-extrabold tracking-wider text-white mt-1 uppercase font-display">
-                CREATIVE COLLAGE
-              </h3>
-            </motion.div> */}
           </motion.div>
         )}
 
@@ -282,9 +276,8 @@ export function HeroCinematicCollage() {
                 delay: 0.4,
               },
             ].map((img, index) => {
-              const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
               const sizeClass = isMobile
-                ? "w-[44vw] aspect-[3/4]"
+                ? "w-[38vw] aspect-[3/4]"
                 : "w-[24vw] max-w-[380px] aspect-[3/4]";
 
               // On mobile, position them slightly more central so they don't cut off

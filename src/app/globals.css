@@ -1474,6 +1474,12 @@ button {
     font-size: 2.4rem;
   }
 
+  .landing-header .brand-mark {
+    height: 32px;
+    padding: 0 8px;
+    font-size: 1.4rem;
+  }
+
   .landing-header-inner {
     height: 82px;
   }
@@ -1503,7 +1509,8 @@ button {
   }
 
   .montra-hero-title {
-    font-size: clamp(3.4rem, 14vw, 5.2rem);
+    font-size: clamp(2.5rem, 11vw, 4.2rem);
+    line-height: 0.95;
   }
 
   .hero-montra-copy p {

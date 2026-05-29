@@ -89,7 +89,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="desart-hero relative min-h-screen overflow-hidden px-6 pt-28 md:px-10 lg:px-14"
+      className="desart-hero relative min-h-screen overflow-hidden px-6 pt-20 md:pt-28 md:px-10 lg:px-14"
     >
       {/* 1. Cinematic dark green lightning background (deep back layer) */}
       <motion.div
@@ -117,7 +117,7 @@ export function HeroSection() {
       {/* 4. Main Content Overlay (top layer) */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-[1880px] flex-col justify-end pb-12 pt-28"
+        className="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-[1880px] flex-col justify-end pb-12 pt-16 md:pt-28"
       >
         <div className="flex w-full flex-col lg:flex-row">
           <div className="w-full lg:w-[70%]">
