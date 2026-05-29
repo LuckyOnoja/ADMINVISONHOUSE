@@ -10,14 +10,14 @@ function SplashBorder() {
     <>
       {/* 1. Base Thicker Pure White Frame */}
       <div className="absolute inset-0 border-[6px] border-white z-20 pointer-events-none rounded-none" />
-      
+
       {/* 2. Organic Paint Drip from top border (dripping down onto image) */}
       <svg viewBox="0 0 60 40" className="absolute w-14 h-10 fill-black z-30 pointer-events-none" style={{ top: "-6px", left: "15%" }}>
         <path d="M 0 6 Q 15 6 20 6 T 30 18 Q 32 30 35 30 Q 38 30 40 6 T 60 6 L 60 0 L 0 0 Z" />
         <circle cx="35" cy="36" r="2.5" />
         <circle cx="23" cy="22" r="1.5" />
       </svg>
-      
+
       {/* 3. Organic Paint Drip from bottom border (dripping down off border) */}
       <svg viewBox="0 0 60 40" className="absolute w-16 h-10 fill-black z-30 pointer-events-none" style={{ bottom: "-6px", left: "45%" }}>
         <path d="M 0 34 Q 15 34 20 34 T 30 22 Q 32 10 35 10 Q 38 10 40 34 T 60 34 L 60 40 L 0 40 Z" />
@@ -129,11 +129,8 @@ export function HeroCinematicCollage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <span className="text-[9px] md:text-[10px] font-semibold tracking-[0.3em] uppercase text-emerald-400">
-                Phase I: The Soundstage
-              </span>
               <h3 className="text-md md:text-xl font-bold tracking-wider text-white mt-1 uppercase font-display">
-                CREATIVE SUITE
+                The Podcast Station
               </h3>
             </motion.div>
           </motion.div>
@@ -218,7 +215,7 @@ export function HeroCinematicCollage() {
             })}
 
             {/* Title Overlay for Phase 2 */}
-            <motion.div
+            {/* <motion.div
               className="absolute bottom-12 left-10 z-30"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -230,7 +227,7 @@ export function HeroCinematicCollage() {
               <h3 className="text-lg md:text-2xl font-extrabold tracking-wider text-white mt-1 uppercase font-display">
                 CREATIVE COLLAGE
               </h3>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         )}
 
@@ -348,7 +345,7 @@ export function HeroCinematicCollage() {
             })}
 
             {/* Staggered subtitles & titles */}
-            <motion.div
+            {/*<motion.div
               className="absolute text-center z-30 pointer-events-none"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -364,7 +361,7 @@ export function HeroCinematicCollage() {
               <h2 className="text-xl md:text-4xl font-black tracking-widest text-white mt-2 uppercase font-display">
                 PREMIUM SPACES
               </h2>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         )}
       </AnimatePresence>
