@@ -8,6 +8,11 @@ import { navItems } from "./landing-data";
 export function LandingHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const updateScrolled = () => setScrolled(window.scrollY > 24);
@@ -22,6 +27,12 @@ export function LandingHeader() {
     <header
       className={`landing-header fixed inset-x-0 top-0 z-50 ${scrolled || mobileMenuOpen ? "is-scrolled" : ""
         }`}
+      style={{
+        opacity: mounted ? 1 : 0,
+        transform: mounted ? "translateY(0)" : "translateY(-20px)",
+        pointerEvents: mounted ? "auto" : "none",
+        transition: "opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
+      }}
     >
       <div className="landing-header-inner mx-auto flex h-20 w-[min(100%-2rem,1360px)] items-center justify-between px-3 md:px-5">
         <Link href="/" className="group flex items-center gap-2.5">

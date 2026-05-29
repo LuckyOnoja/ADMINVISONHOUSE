@@ -8,118 +8,152 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { HeroCinematicCollage } from "./HeroCinematicCollage";
+import { GreenLightningBg } from "./GreenLightningBg";
 
-const titleLine1 = ["A", "D", "M", "I", "N"];
-const titleAccent = "O";
-const titleLine1End = ["", ""];
-const titleLine2 = "VISION HOUSE";
+const titleItems = [
+  { type: "char", value: "A" },
+  { type: "char", value: "D" },
+  { type: "char", value: "M" },
+  { type: "char", value: "I" },
+  { type: "char", value: "N" },
+  { type: "char", value: " " },
+  { type: "accent", value: "O" },
+  { type: "br" },
+  { type: "char", value: "V" },
+  { type: "char", value: "I" },
+  { type: "char", value: "S" },
+  { type: "char", value: "I" },
+  { type: "char", value: "O" },
+  { type: "char", value: "N" },
+  { type: "char", value: " " },
+  { type: "char", value: "H" },
+  { type: "char", value: "O" },
+  { type: "char", value: "U" },
+  { type: "char", value: "S" },
+  { type: "char", value: "E" },
+];
+
+const titleContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06, // typing speed
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const titleCharVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.01 }, // snaps in like a typewriter keypress
+  },
+};
+const titleAccentVariants = {
+  hidden: { scaleX: 0, opacity: 0 },
+  visible: {
+    scaleX: 1,
+    opacity: 1,
+    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] as const },
+  },
+};
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  // Parallax: video moves slower than content
-  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // Parallax: background layers move slower than text content
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   // Content fades and moves up as you scroll away
   const contentY = useTransform(scrollYProgress, [0, 0.6], ["0%", "-10%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   // Horizontal line draws as you scroll
   const lineWidth = useTransform(scrollYProgress, [0, 0.3], ["0%", "100%"]);
 
+  if (!mounted) {
+    return <section className="relative min-h-screen bg-[#090909]" />;
+  }
+
   return (
     <section
       ref={sectionRef}
       className="desart-hero relative min-h-screen overflow-hidden px-6 pt-28 md:px-10 lg:px-14"
     >
-      {/* Parallax video background */}
-      <motion.video
-        className="hero-bg-video"
-        style={{ y: videoY }}
-        src="/hero-video.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      />
-      <div className="hero-video-overlay" aria-hidden="true" />
+      {/* 1. Cinematic dark green lightning background (deep back layer) */}
+      <motion.div
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ y: bgY, zIndex: 1 }}
+      >
+        <GreenLightningBg />
+      </motion.div>
 
-      {/* Main content */}
+      {/* 2. Looping Cinematic Collage (middle layer) */}
+      <motion.div
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ y: bgY, zIndex: 2 }}
+      >
+        <HeroCinematicCollage />
+      </motion.div>
+
+      {/* 3. Dark gradient overlay to soften elements and preserve text contrast */}
+      <div 
+        className="hero-video-overlay pointer-events-none" 
+        aria-hidden="true" 
+        style={{ zIndex: 3, opacity: 0.55 }} 
+      />
+
+      {/* 4. Main Content Overlay (top layer) */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-[1880px] flex-col justify-end pb-12 pt-28"
       >
         <div className="flex w-full flex-col lg:flex-row">
           <div className="w-full lg:w-[70%]">
-            <h1 className="montra-hero-title">
-              {/* Line 1: Each letter staggers in */}
-              {titleLine1.map((letter, i) => (
-                <motion.span
-                  key={`l1-${i}`}
-                  initial={{ y: 120, opacity: 0, rotateX: 90 }}
-                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.3 + i * 0.05,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  style={{ display: "inline-block", transformOrigin: "bottom" }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
-              <motion.span
-                className="accent-block"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.6,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                style={{ display: "inline-block", transformOrigin: "left" }}
-              >
-                {titleAccent}
-              </motion.span>
-              {titleLine1End.map((letter, i) => (
-                <motion.span
-                  key={`l1e-${i}`}
-                  initial={{ y: 120, opacity: 0, rotateX: 90 }}
-                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.7 + i * 0.05,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  style={{ display: "inline-block", transformOrigin: "bottom" }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
-              <br />
-              {/* Line 2: Words slide up */}
-              {titleLine2.split(" ").map((word, i) => (
-                <span key={word + i} style={{ display: "inline-block", overflow: "hidden", marginRight: "0.25em" }}>
+            <motion.h1 
+              className="montra-hero-title"
+              variants={titleContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {titleItems.map((item, idx) => {
+                if (item.type === "br") {
+                  return <br key={`br-${idx}`} />;
+                }
+                if (item.type === "accent") {
+                  return (
+                    <motion.span
+                      key={`accent-${idx}`}
+                      className="accent-block"
+                      variants={titleAccentVariants}
+                      style={{ display: "inline-block", transformOrigin: "left" }}
+                    >
+                      {item.value}
+                    </motion.span>
+                  );
+                }
+                return (
                   <motion.span
-                    initial={{ y: "110%" }}
-                    animate={{ y: "0%" }}
-                    transition={{
-                      duration: 0.9,
-                      delay: 0.8 + i * 0.12,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
+                    key={`char-${idx}`}
+                    variants={titleCharVariants}
                     style={{ display: "inline-block" }}
                   >
-                    {word}
+                    {item.value === " " ? "\u00A0" : item.value}
                   </motion.span>
-                </span>
-              ))}
-            </h1>
+                );
+              })}
+            </motion.h1>
           </div>
 
           <motion.aside
@@ -167,21 +201,6 @@ export function HeroSection() {
               delivering bold visuals and powerful narratives. From content
               campaigns to creative films, we bring your vision to life.
             </motion.p>
-            <motion.div
-              className="hero-card-stack mt-6"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.65, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="hero-mini-card card-a">
-                <span>THIS WEEK</span>
-                <strong>80% BOOKED</strong>
-              </div>
-              <div className="hero-mini-card card-b">
-                <span>READY TO SHOOT?</span>
-                <strong>RESERVE YOUR SPACE</strong>
-              </div>
-            </motion.div>
           </motion.aside>
         </div>
 
