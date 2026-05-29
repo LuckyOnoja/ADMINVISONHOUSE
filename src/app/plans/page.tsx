@@ -191,12 +191,12 @@ export default function PlansPage() {
                   }`}
                 >
                   <div
-                    className="absolute inset-0 bg-cover bg-center opacity-30 transition duration-700 group-hover:scale-105 group-hover:opacity-42"
+                    className="absolute inset-0 bg-cover bg-center opacity-45 transition duration-700 group-hover:scale-105 group-hover:opacity-60"
                     style={{ backgroundImage: `url(${plan.image})` }}
                     aria-hidden="true"
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,5,6,.08),rgba(4,5,6,.82)_52%,rgba(4,5,6,.98))]" />
-                  <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,204,110,.18),transparent_38%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,5,6,.05),rgba(4,5,6,.65)_55%,rgba(4,5,6,.95))]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,204,110,.2),transparent_40%)] opacity-0 transition duration-500 group-hover:opacity-100" />
 
                   {plan.featured && (
                     <div className="absolute right-4 top-4 z-20 border border-[#74f2a5]/45 bg-[#0b2115d0] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[#74f2a5]">
