@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import { navItems } from "./landing-data";
 
@@ -20,9 +20,8 @@ export function LandingHeader() {
 
   return (
     <header
-      className={`landing-header fixed inset-x-0 top-0 z-50 ${
-        scrolled || mobileMenuOpen ? "is-scrolled" : ""
-      }`}
+      className={`landing-header fixed inset-x-0 top-0 z-50 ${scrolled || mobileMenuOpen ? "is-scrolled" : ""
+        }`}
     >
       <div className="landing-header-inner mx-auto flex h-20 w-[min(100%-2rem,1360px)] items-center justify-between px-3 md:px-5">
         <Link href="/" className="group flex items-center gap-2.5">
@@ -59,7 +58,9 @@ export function LandingHeader() {
 
         <div className="nav-actions flex items-center gap-3">
           <Link href="/plans" className="nav-book-button hidden lg:inline-flex">
-            Book Session <ArrowRight size={16} />
+            <span className="nav-book-button-inner">
+              Book A Session <Star size={16} className="star-icon" fill="#fff" strokeWidth={0} />
+            </span>
           </Link>
 
           <button
