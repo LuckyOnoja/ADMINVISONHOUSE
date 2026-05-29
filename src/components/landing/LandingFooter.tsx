@@ -14,9 +14,11 @@ export function LandingFooter() {
         </div>
         <div className="space-y-2 text-sm">
           <p className="font-bold text-white">Our Office</p>
-          <p>Lagos, Nigeria</p>
+          <p>Umudike Junction,</p>
+          <p>Opp. Superlative Filling Station,</p>
+          <p>Umuahia, Abia State, Nigeria</p>
           <p>info@adminvisionhouse.com</p>
-          <p>+234 000 000 0000</p>
+          <p>+234 806 439 2746</p>
         </div>
         <div className="space-y-2 text-sm">
           <p className="font-bold text-white">Navigation</p>
