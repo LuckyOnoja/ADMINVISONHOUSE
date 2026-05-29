@@ -28,8 +28,7 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/serenity-arch.jpg",
       icon: Camera,
       featured: false,
     },
@@ -43,8 +42,7 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/neo-tide.jpg",
       icon: Video,
       featured: true,
     },
@@ -58,8 +56,7 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/velvet-corner.jpg",
       icon: Layers,
       featured: false,
     },
@@ -73,8 +70,7 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/amber-lounge.jpg",
       icon: Award,
       featured: false,
     },
@@ -88,8 +84,7 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/elite-circle.jpg",
       icon: Users,
       featured: false,
     },
@@ -103,8 +98,7 @@ export default function PlansPage() {
         { duration: "30 Minutes", value: "₦20,000" },
         { duration: "1 Hour", value: "₦30,000" },
       ],
-      image:
-        "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/iconic-oasis.jpg",
       icon: Sparkles,
       featured: false,
     },
@@ -116,8 +110,7 @@ export default function PlansPage() {
         "Equipped with professional vocal acoustics, Shure mics, multi-angle 4K streaming capture, and live control mixers.",
       prices: [{ duration: "1 Hour", value: "₦20,000" }],
       extra: "30-minute sessions not available for this space",
-      image:
-        "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1600&q=80",
+      image: "/ADMIN_HOUSE/podcast.jpg",
       icon: Mic,
       featured: false,
     },
@@ -128,21 +121,22 @@ export default function PlansPage() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(61,204,110,.22),transparent_36%),radial-gradient(circle_at_80%_85%,rgba(61,204,110,.12),transparent_30%)]" />
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#090a0bcc] backdrop-blur-xl">
-        <div className="mx-auto flex h-20 w-[min(100%-2rem,1320px)] items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="inline-flex h-9 items-center bg-[#2f9f57] px-3 font-display text-2xl leading-none">
+        <div className="mx-auto flex h-20 w-[min(100%-2rem,1320px)] items-center justify-between px-3 md:px-5">
+          <Link href="/" className="flex items-center gap-2 md:gap-2.5">
+            <span className="inline-flex h-8 md:h-9 items-center bg-[#2f9f57] px-2 md:px-3 font-display text-lg md:text-2xl leading-none">
               ADMIN
             </span>
-            <span className="font-display text-3xl leading-none text-white">
+            <span className="font-display text-2xl sm:text-3xl leading-none text-white md:text-4xl">
               VISION
             </span>
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 border border-white/20 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70 transition hover:border-[#3dcc6e] hover:text-white"
+            className="inline-flex items-center gap-1.5 md:gap-2 border border-white/20 px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70 transition hover:border-[#3dcc6e] hover:text-white"
           >
             <ArrowLeft size={14} />
-            Back to Home
+            <span className="hidden sm:inline">Back to Home</span>
+            <span className="inline sm:hidden">Back</span>
           </Link>
         </div>
       </header>
