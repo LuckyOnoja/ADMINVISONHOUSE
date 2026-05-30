@@ -149,9 +149,9 @@ export function MontraReplicaSections() {
 
       <section id="portfolio" className="section-pad bg-[#050505] px-6 md:px-10 lg:px-14">
         <div className="mx-auto max-w-[1880px]">
-          <div className="mb-8 flex items-end justify-between">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-0">
             <h2 className="section-title">Featured Projects</h2>
-            <Link href="/plans" className="text-link">
+            <Link href="/plans" className="text-link whitespace-nowrap inline-flex items-center gap-1.5">
               Explore All Spaces <ArrowRight size={16} />
             </Link>
           </div>
@@ -211,9 +211,9 @@ export function MontraReplicaSections() {
 
       <section className="section-pad bg-[#070707] px-6 md:px-10 lg:px-14">
         <div className="mx-auto max-w-[1880px]">
-          <div className="mb-8 flex items-end justify-between gap-6">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="section-title sr">Meet The Creative Team</h2>
-            <Link href="/plans" className="text-link">
+            <Link href="/plans" className="text-link whitespace-nowrap inline-flex items-center gap-1.5">
               View All Team <ArrowRight size={16} />
             </Link>
           </div>
