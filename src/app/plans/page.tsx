@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -190,13 +191,16 @@ export default function PlansPage() {
                     plan.featured ? "ring-1 ring-[#3dcc6e]/30" : ""
                   }`}
                 >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-45 transition duration-700 group-hover:scale-105 group-hover:opacity-60"
-                    style={{ backgroundImage: `url(${plan.image})` }}
-                    aria-hidden="true"
+                  <Image
+                    src={plan.image}
+                    alt={plan.name}
+                    fill
+                    className="object-cover opacity-75 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    priority={plan.featured}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,5,6,.05),rgba(4,5,6,.65)_55%,rgba(4,5,6,.95))]" />
-                  <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,204,110,.2),transparent_40%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-[#0d0e10]/80 to-black/25 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,204,110,.15),transparent_40%)] opacity-0 transition duration-500 group-hover:opacity-100" />
 
                   {plan.featured && (
                     <div className="absolute right-4 top-4 z-20 border border-[#74f2a5]/45 bg-[#0b2115d0] px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[#74f2a5]">
