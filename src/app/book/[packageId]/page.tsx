@@ -284,7 +284,7 @@ export default function BookSpacePage() {
           {/* ═══════════════════════════════════════════════════════
               LEFT COLUMN: SELECT, CALENDAR, SLOTS & DETAILS FORM
               ═══════════════════════════════════════════════════════ */}
-          <section className="space-y-6">
+          <section className="space-y-6 order-2 lg:order-1">
             
             {/* Small intro block */}
             <div className="border border-white/10 bg-[#0d0e10d9] p-6">
@@ -299,7 +299,7 @@ export default function BookSpacePage() {
 
             {/* 1. Date Selector Card */}
             <div className="border border-white/10 bg-[#0d0e10d9] p-6">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <h2 className="text-lg font-bold flex items-center gap-2">
                   <CalendarIcon size={16} className="text-[#74f2a5]" />
                   1. Select Session Date
@@ -355,7 +355,7 @@ export default function BookSpacePage() {
                           key={`day-${dayNum}`}
                           disabled={!isAvailable}
                           onClick={() => handleDateSelect(dayNum)}
-                          className={`h-10 text-xs font-mono font-bold rounded-none border transition-all flex flex-col items-center justify-center relative
+                          className={`h-11 sm:h-12 text-xs sm:text-sm font-mono font-bold rounded-none border transition-all flex flex-col items-center justify-center relative
                             ${isAvailable 
                               ? isSelected
                                 ? "bg-[#3dcc6e] text-[#05230f] border-[#79f7ab] shadow-md scale-[1.02]"
@@ -446,7 +446,7 @@ export default function BookSpacePage() {
                     {/* Time slots grid */}
                     <div>
                       <div className="text-[10px] text-gray-500 uppercase tracking-widest font-mono mb-3">Available Start Times:</div>
-                      <div className="grid grid-cols-4 gap-2">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                         {slots.map((slot) => {
                           const isAvailable = selectedDuration === 30 ? slot.available30Min : slot.available60Min;
                           const isSelected = selectedTime === slot.time;
@@ -578,7 +578,7 @@ export default function BookSpacePage() {
           {/* ═══════════════════════════════════════════════════════
               RIGHT COLUMN: SPACE IMAGE IN ITS FULL & DETAILS
               ═══════════════════════════════════════════════════════ */}
-          <aside className="sticky top-28 space-y-6">
+          <aside className="lg:sticky lg:top-28 space-y-6 order-1 lg:order-2">
             {packageVisual && (
               <div className="border border-white/10 bg-[#0d0e10d9] p-6 space-y-6">
                 

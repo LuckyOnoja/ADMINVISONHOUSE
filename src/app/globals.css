@@ -1589,3 +1589,60 @@ button {
     font-size: clamp(2rem, 9vw, 3.4rem);
   }
 }
+
+/* ─────────────────────────────────────────────
+   CINEMATIC SPLASH TITLE & HIGHLIGHT ANIMATIONS
+   ───────────────────────────────────────────── */
+.cinematic-display-title {
+  color: white;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.2vw, 5.8rem);
+  line-height: 0.95;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.highlight-splash {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-splash::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  right: -20px;
+  top: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle, rgba(47, 159, 87, 0.28) 0%, transparent 70%);
+  filter: blur(14px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.path-animation {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-line 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes draw-line {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .cinematic-display-title {
+    font-size: clamp(2.1rem, 8vw, 3.2rem);
+    line-height: 1.05;
+  }
+}

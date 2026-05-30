@@ -89,10 +89,20 @@ export function MontraReplicaSections() {
       {/* ═══════════════════════════════════════════════════════
           SECTION: ABOUT / STUDIO REEL
           ═══════════════════════════════════════════════════════ */}
-      <section id="about" className="section-pad bg-[#0a0a0a] px-6 md:px-10 lg:px-14">
+      <section id="about" className="section-pad bg-[#0a0a0a] px-4 md:px-6 lg:px-8">
         <div className="mx-auto grid max-w-[1880px] gap-10 lg:grid-cols-[1.15fr_.85fr] items-center">
           <div>
-            <p className="eyebrow sr">Crafting Stories Through Cinematic Frames</p>
+            <h2 className="cinematic-display-title sr">
+              Crafting Stories Through{" "}
+              <span className="relative inline-block highlight-splash">
+                <span className="relative z-10 bg-gradient-to-r from-[#6ef5a1] via-[#2f9f57] to-[#3bf584] bg-clip-text text-transparent">
+                  Cinematic Frames
+                </span>
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#2f9f57]/50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0,5 Q30,9 50,5 T100,5" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" className="path-animation" />
+                </svg>
+              </span>
+            </h2>
             <p className="max-w-3xl text-base leading-relaxed text-white/75 sr sr-delay-1">
               Every story deserves to be told with power, passion, and
               precision. At Admin Vision House, we combine cutting-edge technology
@@ -173,7 +183,7 @@ export function MontraReplicaSections() {
       {/* ═══════════════════════════════════════════════════════
           SECTION: MARKETING GALLERY — Visitor → Client Conversion
           ═══════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-[#060606] px-6 md:px-10 lg:px-14">
+      <section className="section-pad bg-[#060606] px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-[1880px]">
           {/* Conversion headline */}
           <div className="mb-6 sr">
@@ -243,7 +253,7 @@ export function MontraReplicaSections() {
       {/* ═══════════════════════════════════════════════════════
           SECTION: WHAT WE DO BEST — Services with Banner Images
           ═══════════════════════════════════════════════════════ */}
-      <section id="services" className="section-pad bg-[#070707] px-6 md:px-10 lg:px-14">
+      <section id="services" className="section-pad bg-[#070707] px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-[1880px]">
           <div className="mb-4 sr">
             <p className="text-[11px] font-bold tracking-[0.35em] text-[#3dcc6e] uppercase mb-3">Services</p>
@@ -409,7 +419,7 @@ export function MontraReplicaSections() {
       {/* ═══════════════════════════════════════════════════════
           SECTION: TRUST METRICS
           ═══════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-[#070707] px-6 md:px-10 lg:px-14">
+      <section className="section-pad bg-[#070707] px-4 md:px-6 lg:px-8">
         <div className="mx-auto grid max-w-[1880px] gap-4 md:grid-cols-2 xl:grid-cols-4">
           {trustItems.map((item, index) => (
             <article key={item.label} className="stat-tile card-switch border border-white/10 sr">
@@ -429,7 +439,7 @@ export function MontraReplicaSections() {
       {/* ═══════════════════════════════════════════════════════
           SECTION: PORTFOLIO / FEATURED PROJECTS
           ═══════════════════════════════════════════════════════ */}
-      <section id="portfolio" className="section-pad bg-[#050505] px-6 md:px-10 lg:px-14">
+      <section id="portfolio" className="section-pad bg-[#050505] px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-[1880px]">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-0">
             <div>
@@ -474,9 +484,121 @@ export function MontraReplicaSections() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
+          SECTION: COMMUNITY / SOCIAL PROOF (INSTAGRAM WALL)
+          ═══════════════════════════════════════════════════════ */}
+      <section id="community" className="section-pad bg-[#060606] px-4 md:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1880px]">
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-0 sr">
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.35em] text-[#3dcc6e] uppercase mb-3">Join Us</p>
+              <h2 className="section-title">Who Has Joined Us</h2>
+              <p className="mt-4 max-w-2xl text-white/60 text-sm leading-relaxed">
+                Connect with our thriving creative community. Follow us on Instagram to see real creators in action inside Admin Vision House.
+              </p>
+            </div>
+            <a 
+              href="https://www.instagram.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-link"
+            >
+              Follow @adminvisionhouse <ArrowRight size={16} />
+            </a>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                url: "https://www.instagram.com/p/DY6l6OrjX-n/?igsh=bHc3NDVwbXNuejI3",
+                img: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80",
+                caption: "Cinematic frames and pristine captures. The craft is in the details. 📸✨",
+                likes: "1,248"
+              },
+              {
+                url: "https://www.instagram.com/p/DYzPknzDZhp/?igsh=MWEwNXdrODh6dmF0Zg==",
+                img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+                caption: "Our studio configurations are tailored to empower your production workflow. ⚡️💡",
+                likes: "956"
+              },
+              {
+                url: "https://www.instagram.com/p/DYvWdVTiI2v/?igsh=czZoNjlrMHIyZTM2",
+                img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80",
+                caption: "Creating stories that resonate and visuals that leave a lasting mark. 🎬🎞️",
+                likes: "1,412"
+              },
+              {
+                url: "https://www.instagram.com/p/DY9-uUmjWXd/?igsh=MTZtbGx1eWZ0bm4yYw==",
+                img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
+                caption: "In the podcast zone: crystal clear acoustics meet gorgeous ambient set designs. 🎙️🌌",
+                likes: "1,104"
+              }
+            ].map((post, i) => (
+              <a
+                key={i}
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-[4/5] border border-white/10 bg-[#0d0e10] overflow-hidden card-switch transition-all duration-500 hover:border-[#3dcc6e]/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(47,159,87,0.15)]"
+              >
+                <Image
+                  src={post.img}
+                  alt="Instagram Community Post"
+                  fill
+                  className="object-cover transition-all duration-700 brightness-[0.8] group-hover:brightness-[0.55] group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                
+                {/* Instagram Header simulation inside post hover */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-full border-2 border-[#3dcc6e] p-0.5 bg-black overflow-hidden flex items-center justify-center">
+                      <div className="w-full h-full rounded-full bg-[#111] flex items-center justify-center text-[7px] font-bold text-white font-mono">AV</div>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold text-white block leading-none">adminvisionhouse</span>
+                      <span className="text-[8px] text-white/50">Abia, Nigeria</span>
+                    </div>
+                  </div>
+                  <div className="w-5 h-5 flex items-center justify-center bg-black/60 rounded-full text-white">
+                    <span className="text-[10px] font-bold">IG</span>
+                  </div>
+                </div>
+
+                {/* Text and Actions Overlay on Hover */}
+                <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black via-black/80 to-transparent pt-12 transform translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
+                  <p className="text-xs text-white/90 leading-relaxed font-light line-clamp-3">
+                    {post.caption}
+                  </p>
+                  
+                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/70">
+                    <div className="flex items-center gap-3">
+                      <span className="flex items-center gap-1 font-bold text-[#7ff5aa]">
+                        ❤️ {post.likes}
+                      </span>
+                      <span>💬 Comment</span>
+                    </div>
+                    <span className="text-[#7ff5aa] font-bold tracking-wider hover:underline flex items-center gap-1">
+                      VIEW POST <ArrowRight size={10} />
+                    </span>
+                  </div>
+                </div>
+
+                {/* Constant Static Icon to show it's interactive and social */}
+                <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-black/70 border border-white/10 flex items-center justify-center text-[#7ff5aa] group-hover:scale-0 group-hover:opacity-0 transition-all duration-300 z-10">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
           SECTION: TESTIMONIALS
           ═══════════════════════════════════════════════════════ */}
-      <section className="section-pad bg-[#050505] px-6 md:px-10 lg:px-14">
+      <section className="section-pad bg-[#050505] px-4 md:px-6 lg:px-8">
         <div className="mx-auto max-w-[1880px]">
           <div className="sr">
             <p className="text-[11px] font-bold tracking-[0.35em] text-[#3dcc6e] uppercase mb-3">Testimonials</p>
@@ -503,7 +625,7 @@ export function MontraReplicaSections() {
       {/* ═══════════════════════════════════════════════════════
           SECTION: CTA — Final Conversion Push
           ═══════════════════════════════════════════════════════ */}
-      <section className="cta-section section-pad bg-[#2f9f57] px-6 py-14 text-black md:px-10 lg:px-14">
+      <section className="cta-section section-pad bg-[#2f9f57] px-4 py-14 text-black md:px-6 lg:px-8">
         <div className="mx-auto flex max-w-[1880px] flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display text-5xl leading-[0.88] text-white md:text-6xl">

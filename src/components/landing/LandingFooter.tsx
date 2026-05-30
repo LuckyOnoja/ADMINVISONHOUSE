@@ -1,6 +1,6 @@
 export function LandingFooter() {
   return (
-    <footer id="contact" className="bg-[#080808] px-6 py-14 md:px-10 lg:px-14">
+    <footer id="contact" className="bg-[#080808] px-4 py-14 md:px-6 lg:px-8">
       <div className="mx-auto grid max-w-[1880px] gap-10 border-t border-white/15 pt-10 text-white/65 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">

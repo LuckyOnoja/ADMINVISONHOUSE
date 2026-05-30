@@ -101,7 +101,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="desart-hero relative min-h-screen overflow-hidden px-6 pt-20 md:pt-28 md:px-10 lg:px-14"
+      className="desart-hero relative min-h-screen overflow-hidden px-4 pt-20 md:pt-28 md:px-6 lg:px-8"
     >
       {/* 1. Cinematic dark green lightning background (deep back layer) */}
       <motion.div
