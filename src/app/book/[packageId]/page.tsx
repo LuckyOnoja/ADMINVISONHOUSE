@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { 
   ArrowLeft, 
@@ -39,38 +40,31 @@ const PACKAGES_MAP: Record<string, string> = {
 
 const PACKAGE_VISUALS: Record<string, { image: string; accent: string }> = {
   "serenity-arch": {
-    image:
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/serenity-arch.jpg",
     accent: "#7cf1a8",
   },
   "neo-tide": {
-    image:
-      "https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/neo-tide.jpg",
     accent: "#5ce0ff",
   },
   "velvet-corner": {
-    image:
-      "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/velvet-corner.jpg",
     accent: "#ff7199",
   },
   "amber-lounge": {
-    image:
-      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/amber-lounge.jpg",
     accent: "#ffc275",
   },
   "elite-circle": {
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/elite-circle.jpg",
     accent: "#d8e6ff",
   },
   "iconic-oasis": {
-    image:
-      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/iconic-oasis.jpg",
     accent: "#8ff5c0",
   },
   "podcast": {
-    image:
-      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1600&q=80",
+    image: "/ADMIN_HOUSE/podcast.jpg",
     accent: "#95ffcb",
   },
 };
@@ -272,22 +266,26 @@ export default function BookSpacePage() {
 
       <main className="relative z-10 mx-auto grid w-[min(100%-2rem,1320px)] grid-cols-1 gap-8 pb-16 pt-28 lg:grid-cols-12 lg:items-start">
         <section className="lg:col-span-8 space-y-8">
-          <div className="relative overflow-hidden border border-white/10 p-6 md:p-7">
-            {packageVisual ? (
+          <div className="relative overflow-hidden border border-white/10 p-6 md:p-7 min-h-[140px] flex items-center">
+            {packageVisual && (
               <>
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-30"
-                  style={{ backgroundImage: `url(${packageVisual.image})` }}
+                <Image
+                  src={packageVisual.image}
+                  alt={packageName}
+                  fill
+                  className="object-cover opacity-50"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  priority
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.82))]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent" />
               </>
-            ) : null}
-            <div className="relative z-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            )}
+            <div className="relative z-10 w-full flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">Secure booking flow</p>
-                <h2 className="font-display text-4xl leading-[0.9]">Reserve {packageName}</h2>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#74f2a5]">Secure booking flow</p>
+                <h2 className="font-display text-4xl leading-[0.9] text-white">Reserve {packageName}</h2>
               </div>
-              <p className="max-w-xs text-sm text-white/70">
+              <p className="max-w-xs text-xs text-white/80 leading-relaxed">
                 Choose date, time, and duration. Then complete payment securely with Paystack.
               </p>
             </div>
@@ -475,6 +473,24 @@ export default function BookSpacePage() {
 
         <aside className="lg:col-span-4">
           <div className="sticky top-28 border border-white/12 bg-[#0f1114ed] p-6">
+            {/* Space Preview Image Block */}
+            {packageVisual && (
+              <div className="relative mb-5 w-full aspect-[16/10] overflow-hidden border border-white/10 bg-black/20">
+                <Image
+                  src={packageVisual.image}
+                  alt={packageName}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 border border-[#3dcc6e]/45 bg-[#0b2115d0] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.16em] text-[#74f2a5]">
+                  Selected Space
+                </span>
+              </div>
+            )}
+            
             <h3 className="text-lg font-bold mb-4 text-white pb-3 border-b border-white/10">Booking Summary</h3>
             
             <div className="space-y-4 mb-6 text-sm">
