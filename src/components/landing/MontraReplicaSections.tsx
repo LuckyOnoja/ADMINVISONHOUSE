@@ -41,7 +41,7 @@ export function MontraReplicaSections() {
               your color direction and conversion-focused messaging.
             </p>
           </div>
-          <div 
+          <div
             onClick={() => setIsOpen(true)}
             className="group relative cursor-pointer overflow-hidden border border-white/15 bg-black h-72 md:h-80 shadow-[0_0_30px_rgba(0,0,0,0.5)] transition hover:border-[#3dcc6e]/40 sr-scale sr-delay-2"
           >
@@ -60,7 +60,7 @@ export function MontraReplicaSections() {
 
             {/* Play Button Overlay */}
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors duration-500 z-10">
-              <motion.div 
+              <motion.div
                 className="flex items-center justify-center w-16 h-16 rounded-full border border-white/20 bg-black/60 text-white shadow-[0_0_15px_rgba(0,0,0,0.5)] group-hover:scale-110 group-hover:border-[#3dcc6e] group-hover:text-[#3dcc6e] group-hover:shadow-[0_0_25px_rgba(0,0,0,0.7)] transition-all duration-500"
                 whileTap={{ scale: 0.95 }}
               >
@@ -213,9 +213,6 @@ export function MontraReplicaSections() {
         <div className="mx-auto max-w-[1880px]">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <h2 className="section-title sr">Meet The Creative Team</h2>
-            <Link href="/plans" className="text-link whitespace-nowrap inline-flex items-center gap-1.5">
-              View All Team <ArrowRight size={16} />
-            </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {["Daniel Reyes", "Maya Chen", "Sasha Morgan", "Leo Fernandez"].map(
