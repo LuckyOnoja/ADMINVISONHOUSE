@@ -189,7 +189,9 @@ export function MontraReplicaSections() {
           <div className="mb-6 sr">
             <p className="text-[11px] font-bold tracking-[0.35em] text-[#3dcc6e] uppercase mb-3">Our Work Speaks</p>
             <h2 className="section-title max-w-4xl">
-              Real Clients. Real Results. Real Impact.
+              <span className="block md:inline whitespace-nowrap">Real Clients. </span>
+              <span className="block md:inline whitespace-nowrap">Real Results. </span>
+              <span className="block md:inline whitespace-nowrap">Real Impact.</span>
             </h2>
             <p className="mt-5 max-w-2xl text-white/60 text-base leading-relaxed">
               Every image below was shot inside our studio. This is the quality you get when you book with Admin Vision House — 
