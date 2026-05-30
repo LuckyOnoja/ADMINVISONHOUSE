@@ -151,9 +151,6 @@ export function MontraReplicaSections() {
         <div className="mx-auto max-w-[1880px]">
           <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-0">
             <h2 className="section-title">Featured Projects</h2>
-            <Link href="/plans" className="text-link whitespace-nowrap inline-flex items-center gap-1.5">
-              Explore All Spaces <ArrowRight size={16} />
-            </Link>
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {["Urban Soul", "Echoes of Fashion", "The Journey", "Legacy"].map(
