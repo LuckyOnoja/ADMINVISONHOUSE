@@ -49,8 +49,11 @@ function SplashBorder() {
   );
 }
 
-export function HeroCinematicCollage() {
-  const [phase, setPhase] = useState<Phase>("phase1");
+interface HeroCinematicCollageProps {
+  phase: Phase;
+}
+
+export function HeroCinematicCollage({ phase }: HeroCinematicCollageProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -60,34 +63,6 @@ export function HeroCinematicCollage() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  useEffect(() => {
-    let active = true;
-    const runSequence = async () => {
-      while (active) {
-        // Phase 1: 4.5 seconds
-        setPhase("phase1");
-        await new Promise((resolve) => setTimeout(resolve, 4500));
-        if (!active) break;
-
-        // Phase 2: 5.5 seconds
-        setPhase("phase2");
-        await new Promise((resolve) => setTimeout(resolve, 5500));
-        if (!active) break;
-
-        // Phase 3: 6.0 seconds
-        setPhase("phase3");
-        await new Promise((resolve) => setTimeout(resolve, 6000));
-        if (!active) break;
-      }
-    };
-
-    runSequence();
-
-    return () => {
-      active = false;
-    };
   }, []);
 
   return (
@@ -112,7 +87,7 @@ export function HeroCinematicCollage() {
               transition: { duration: 0.8, ease: "easeInOut" },
             }}
             transition={{
-              duration: 4.5,
+              duration: 5.0,
               ease: [0.16, 1, 0.3, 1],
               times: [0, 0.8, 1],
             }}
@@ -125,7 +100,7 @@ export function HeroCinematicCollage() {
                 className="absolute inset-0 w-full h-full object-cover"
                 initial={{ scale: 1.2 }}
                 animate={{ scale: 1 }}
-                transition={{ duration: 4.5, ease: "easeOut" }}
+                transition={{ duration: 5.0, ease: "easeOut" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-10" />
             </div>

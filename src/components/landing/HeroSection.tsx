@@ -64,9 +64,14 @@ const titleAccentVariants = {
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [collageInterval, setCollageInterval] = useState(0);
 
   useEffect(() => {
     setMounted(true);
+    const timer = setInterval(() => {
+      setCollageInterval((prev) => prev + 1);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -86,6 +91,13 @@ export function HeroSection() {
     return <section className="relative min-h-screen bg-[#090909]" />;
   }
 
+  const phase = (() => {
+    const p = collageInterval % 3;
+    if (p === 0) return "phase1";
+    if (p === 1) return "phase2";
+    return "phase3";
+  })();
+
   return (
     <section
       ref={sectionRef}
@@ -96,7 +108,7 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{ y: bgY, zIndex: 1 }}
       >
-        <GreenLightningBg />
+        <GreenLightningBg collageInterval={collageInterval} />
       </motion.div>
 
       {/* 2. Looping Cinematic Collage (middle layer) */}
@@ -104,7 +116,7 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{ y: bgY, zIndex: 2 }}
       >
-        <HeroCinematicCollage />
+        <HeroCinematicCollage phase={phase} />
       </motion.div>
 
       {/* 3. Dark gradient overlay to soften elements and preserve text contrast */}

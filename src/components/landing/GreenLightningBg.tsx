@@ -3,7 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export function GreenLightningBg() {
+interface GreenLightningBgProps {
+  collageInterval: number;
+}
+
+export function GreenLightningBg({ collageInterval }: GreenLightningBgProps) {
+  const isVisible = collageInterval % 2 !== 0;
+
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
       {/* Dark base background */}
@@ -22,20 +28,17 @@ export function GreenLightningBg() {
       <motion.div
         className="absolute top-0 h-full flex justify-center pointer-events-none"
         style={{ left: "-98px", width: "200px" }}
+        initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
         animate={{
-          clipPath: [
-            "inset(0% 0% 100% 0%)", // 0%: completely hidden at top
-            "inset(0% 0% 0% 0%)",   // 25% (4s): fully revealed down to bottom
-            "inset(0% 0% 0% 0%)",   // 50% (8s): hold fully revealed
-            "inset(100% 0% 0% 0%)", // 75% (12s): faded out/shrunk to bottom
-            "inset(100% 0% 0% 0%)", // 100% (16s): hold hidden before restart
-          ],
+          clipPath: collageInterval === 0
+            ? "inset(0% 0% 100% 0%)"
+            : isVisible
+            ? ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"]
+            : "inset(100% 0% 0% 0%)",
         }}
         transition={{
-          duration: 16,
-          times: [0, 0.25, 0.5, 0.75, 1],
-          ease: ["easeInOut", "linear", "easeInOut", "linear"],
-          repeat: Infinity,
+          duration: 0.8,
+          ease: "easeInOut",
         }}
       >
         <div className="relative w-[4px] h-full">
@@ -80,7 +83,7 @@ export function GreenLightningBg() {
             initial={{ top: "-150px" }}
             animate={{ top: "calc(100% + 150px)" }}
             transition={{
-              duration: 4.5,
+              duration: 5.0,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -92,20 +95,17 @@ export function GreenLightningBg() {
       <motion.div
         className="absolute top-0 h-full flex justify-center pointer-events-none"
         style={{ right: "-98px", width: "200px" }}
+        initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
         animate={{
-          clipPath: [
-            "inset(0% 0% 100% 0%)", // 0%: completely hidden at top
-            "inset(0% 0% 0% 0%)",   // 25% (4s): fully revealed down to bottom
-            "inset(0% 0% 0% 0%)",   // 50% (8s): hold fully revealed
-            "inset(100% 0% 0% 0%)", // 75% (12s): faded out/shrunk to bottom
-            "inset(100% 0% 0% 0%)", // 100% (16s): hold hidden before restart
-          ],
+          clipPath: collageInterval === 0
+            ? "inset(0% 0% 100% 0%)"
+            : isVisible
+            ? ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"]
+            : "inset(100% 0% 0% 0%)",
         }}
         transition={{
-          duration: 16,
-          times: [0, 0.25, 0.5, 0.75, 1],
-          ease: ["easeInOut", "linear", "easeInOut", "linear"],
-          repeat: Infinity,
+          duration: 0.8,
+          ease: "easeInOut",
         }}
       >
         <div className="relative w-[4px] h-full">
@@ -150,7 +150,7 @@ export function GreenLightningBg() {
             initial={{ top: "-150px" }}
             animate={{ top: "calc(100% + 150px)" }}
             transition={{
-              duration: 4.5,
+              duration: 5.0,
               repeat: Infinity,
               ease: "linear",
               delay: 0.5,
