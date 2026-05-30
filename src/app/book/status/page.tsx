@@ -251,7 +251,7 @@ export default function BookingStatusPage() {
         </div>
       </header>
 
-      <main className="relative z-10 flex flex-grow items-center justify-center px-6 py-12">
+      <main className="relative z-10 flex flex-grow items-center justify-center px-4 md:px-6 lg:px-8 py-12">
         <Suspense fallback={
           <div className="text-center py-16 space-y-4">
             <Loader2 className="animate-spin text-[#10B981] mx-auto" size={48} />

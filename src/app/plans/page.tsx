@@ -142,7 +142,7 @@ export default function PlansPage() {
         </div>
       </header>
 
-      <section className="relative px-6 pb-14 pt-30">
+      <section className="relative px-4 md:px-6 lg:px-8 pb-14 pt-30">
         <div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[1.3fr_.7fr] lg:items-end">
           <div>
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-[#74f2a5]">
@@ -179,7 +179,7 @@ export default function PlansPage() {
         </div>
       </section>
 
-      <main className="relative z-10 flex-grow px-6 pb-24">
+      <main className="relative z-10 flex-grow px-4 md:px-6 lg:px-8 pb-24">
         <div className="mx-auto max-w-[1320px]">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {plans.map((plan) => {
@@ -272,7 +272,7 @@ export default function PlansPage() {
       </main>
 
       <footer className="border-t border-white/10 bg-[#090a0b]">
-        <div className="mx-auto flex max-w-[1320px] flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-white/45 md:flex-row">
+        <div className="mx-auto flex max-w-[1320px] flex-col items-center justify-between gap-4 px-4 md:px-6 lg:px-8 py-6 text-xs text-white/45 md:flex-row">
           <p>© {new Date().getFullYear()} Admin Vision House. All rights reserved.</p>
           <p className="text-white/35">Secure checkout powered by Paystack</p>
         </div>
