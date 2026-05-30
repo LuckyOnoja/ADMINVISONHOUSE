@@ -21,7 +21,7 @@ const services = [
     icon: Film,
     title: "Videography",
     desc: "High-quality video production for brands, businesses, events, music videos, interviews, and social media content.",
-    image: "https://images.unsplash.com/photo-1579566346927-c68383817a25?auto=format&fit=crop&w=1200&q=85",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=85",
     tag: "PRODUCTION",
   },
   {

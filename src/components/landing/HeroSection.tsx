@@ -70,7 +70,7 @@ export function HeroSection() {
     setMounted(true);
     const timer = setInterval(() => {
       setCollageInterval((prev) => prev + 1);
-    }, 5000);
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
 

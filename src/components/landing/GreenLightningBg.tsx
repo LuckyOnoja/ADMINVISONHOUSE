@@ -8,8 +8,6 @@ interface GreenLightningBgProps {
 }
 
 export function GreenLightningBg({ collageInterval }: GreenLightningBgProps) {
-  const isVisible = collageInterval % 2 !== 0;
-
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
       {/* Dark base background */}
@@ -26,18 +24,22 @@ export function GreenLightningBg({ collageInterval }: GreenLightningBgProps) {
 
       {/* ═══ LEFT NEON STRIPE ═══ */}
       <motion.div
+        key={`left-${collageInterval}`}
         className="absolute top-0 h-full flex justify-center pointer-events-none"
         style={{ left: "-98px", width: "200px" }}
-        initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
+        initial={{ opacity: 0, clipPath: "inset(0% 0% 100% 0%)" }}
         animate={{
-          clipPath: collageInterval === 0
-            ? "inset(0% 0% 100% 0%)"
-            : isVisible
-            ? ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"]
-            : "inset(100% 0% 0% 0%)",
+          opacity: [0, 1, 1, 0],
+          clipPath: [
+            "inset(0% 0% 100% 0%)",
+            "inset(0% 0% 0% 0%)",
+            "inset(0% 0% 0% 0%)",
+            "inset(100% 0% 0% 0%)"
+          ],
         }}
         transition={{
-          duration: 0.8,
+          duration: 2.5, // total time of the flash & fade out
+          times: [0, 0.2, 0.7, 1], // fast entry, stays brief, fades out
           ease: "easeInOut",
         }}
       >
@@ -83,8 +85,8 @@ export function GreenLightningBg({ collageInterval }: GreenLightningBgProps) {
             initial={{ top: "-150px" }}
             animate={{ top: "calc(100% + 150px)" }}
             transition={{
-              duration: 5.0,
-              repeat: Infinity,
+              duration: 2.5,
+              repeat: 0,
               ease: "linear",
             }}
           />
@@ -93,19 +95,24 @@ export function GreenLightningBg({ collageInterval }: GreenLightningBgProps) {
 
       {/* ═══ RIGHT NEON STRIPE ═══ */}
       <motion.div
+        key={`right-${collageInterval}`}
         className="absolute top-0 h-full flex justify-center pointer-events-none"
         style={{ right: "-98px", width: "200px" }}
-        initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
+        initial={{ opacity: 0, clipPath: "inset(0% 0% 100% 0%)" }}
         animate={{
-          clipPath: collageInterval === 0
-            ? "inset(0% 0% 100% 0%)"
-            : isVisible
-            ? ["inset(0% 0% 100% 0%)", "inset(0% 0% 0% 0%)"]
-            : "inset(100% 0% 0% 0%)",
+          opacity: [0, 1, 1, 0],
+          clipPath: [
+            "inset(0% 0% 100% 0%)",
+            "inset(0% 0% 0% 0%)",
+            "inset(0% 0% 0% 0%)",
+            "inset(100% 0% 0% 0%)"
+          ],
         }}
         transition={{
-          duration: 0.8,
+          duration: 2.5,
+          times: [0, 0.2, 0.7, 1],
           ease: "easeInOut",
+          delay: 0.15, // slightly staggered
         }}
       >
         <div className="relative w-[4px] h-full">
@@ -150,10 +157,10 @@ export function GreenLightningBg({ collageInterval }: GreenLightningBgProps) {
             initial={{ top: "-150px" }}
             animate={{ top: "calc(100% + 150px)" }}
             transition={{
-              duration: 5.0,
-              repeat: Infinity,
+              duration: 2.5,
+              repeat: 0,
               ease: "linear",
-              delay: 0.5,
+              delay: 0.15,
             }}
           />
         </div>
