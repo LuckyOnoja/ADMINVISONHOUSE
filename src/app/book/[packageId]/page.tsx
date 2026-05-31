@@ -649,6 +649,68 @@ export default function BookSpacePage() {
           </aside>
 
         </div>
+
+        {/* ═══════════════════════════════════════════════════════
+            STUDIO GUIDELINES & POLICIES
+            ═══════════════════════════════════════════════════════ */}
+        <section className="mt-12 border border-white/10 bg-[#0d0e10d9] p-6 md:p-8">
+          <div className="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+            <div className="w-10 h-10 flex items-center justify-center border border-[#3dcc6e]/40 bg-[#3dcc6e]/10">
+              <AlertCircle size={18} className="text-[#74f2a5]" />
+            </div>
+            <div>
+              <h2 className="text-lg font-bold text-white">Studio Guidelines & Policies</h2>
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/50">Please read before your session</p>
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            {[
+              {
+                text: "Please arrive 15 minutes before your schedule time.",
+                highlight: "15 minutes before",
+              },
+              {
+                text: "Any arrival beyond 5 minutes after the scheduled booking time will attract a ₦5,000 lateness fee.",
+                highlight: "₦5,000 lateness fee",
+              },
+              {
+                text: "Kindly note that your session time begins at your exact appointment time, and access is limited to the area you\u2019ve paid for.",
+                highlight: "exact appointment time",
+              },
+              {
+                text: "Any additional background change during the shoot attracts an extra ₦10,000 fee.",
+                highlight: "₦10,000 fee",
+              },
+            ].map((rule, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-4 group"
+              >
+                <div className="flex-shrink-0 mt-0.5 w-7 h-7 flex items-center justify-center bg-[#3dcc6e]/10 border border-[#3dcc6e]/25 text-[#74f2a5] group-hover:bg-[#3dcc6e]/20 group-hover:border-[#3dcc6e]/50 transition-all duration-300">
+                  <svg className="w-3 h-3 fill-current ml-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <p className="text-sm text-white/80 leading-relaxed font-medium">
+                  {rule.text.split(rule.highlight).map((part, j, arr) => (
+                    <React.Fragment key={j}>
+                      {part}
+                      {j < arr.length - 1 && (
+                        <span className="font-extrabold text-[#74f2a5]">{rule.highlight}</span>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-white/10 text-[10px] font-mono text-white/40 uppercase tracking-[0.15em] text-center">
+            By proceeding with your booking, you agree to these studio policies.
+          </div>
+        </section>
+
       </main>
 
       <footer className="border-t border-white/10 bg-[#090a0b]">
